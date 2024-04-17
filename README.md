@@ -1,3 +1,12 @@
-# infra-auto-aws-tag
+# auto-aws-tag
 
-Archive: we gave up on this solution. This was to make sure all resources from types configured in Grafana Cloud integration would be scraped. We've decided that this should be done manually on a case-by-case basis instead for cost savings.
+- Gets event from EventBridge AWS rule
+- Uses Tagging API to tag any resource
+
+Deploy config:
+
+```
+alias lambdaup="zip -r ../auto-aws-tag.zip * && aws lambda update-function-code --function-name auto-aws-tag --zip-file fileb://../auto-aws-tag.zip"
+
+lambdaup
+```
